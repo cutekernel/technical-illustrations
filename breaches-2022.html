@@ -6,14 +6,15 @@
       <meta name="viewport" content="width=device-width, user-scalable=no" />
       <title>Technical Illustrations - 2022</title>
       <link rel="stylesheet" href="public/lightgallery/css/lightgallery.css" />
+      <link rel="stylesheet" href="public/lightslider/css/lightslider.min.css" />
       <link rel="stylesheet" href="public/videojs/video-js.min.css" />
       <link rel="stylesheet" href="public/lightgallery/css/lg-exif.min.css" />
       <link rel="stylesheet" href="public/core.css" />
       <link rel="stylesheet" href="public/theme.css" />
+      <link rel="stylesheet" href="public/justifiedgallery/justifiedGallery.min.css" />
   </head>
 
   <body>
-
     
     <div id="container">
     
@@ -31,31 +32,27 @@
     <a class="breadcrumb-item" href="index.html">Home</a>&nbsp;/&nbsp;<a class="breadcrumb-item" href="breaches.html">breaches</a>&nbsp;/&nbsp;<a class="breadcrumb-item" href="breaches-2022.html">2022</a>
       </nav>
     
+    
       <!--
         Nested albums, if any
       -->
-      <div id="albums">
+      <div id="albums" class="justified-gallery">
       </div>
     
       <!--
         All photos and videos
       -->
-      <ul id="media" class="clearfix">
+      <ul id="media" class="clearfix justified-gallery">
           
-            <li data-src="media/large/breaches/2022/Solarwinds_Supply_Chain_Compromise_2022.png"
-                data-sub-html=""
-                data-download-url="media/original/breaches/2022/Solarwinds_Supply_Chain_Compromise_2022.png"
-                
-                data-filename="Solarwinds_Supply_Chain_Compromise_2022.png"
-          
-              >
-              <a href="media/original/breaches/2022/Solarwinds_Supply_Chain_Compromise_2022.png">
-                <img src="media/thumbs/breaches/2022/Solarwinds_Supply_Chain_Compromise_2022.png"
-                     width="120"
-                     height="120"
-                     alt="Solarwinds_Supply_Chain_Compromise_2022.png" />
+          <div class="albumList"
+              data-sub-html=""
+              data-download-url="media/original/breaches/2022/Solarwinds_Supply_Chain_Compromise_2022.png"data-src="media/large/breaches/2022/Solarwinds_Supply_Chain_Compromise_2022.png"data-exthumbimage="media/thumbs/breaches/2022/Solarwinds_Supply_Chain_Compromise_2022.png"data-filename="Solarwinds_Supply_Chain_Compromise_2022.png"><a href="media/large/breaches/2022/Solarwinds_Supply_Chain_Compromise_2022.png"><img
+                      src="media/small/breaches/2022/Solarwinds_Supply_Chain_Compromise_2022.png"
+                      width="635.7428773251708"
+                      height="300"alt="Solarwinds_Supply_Chain_Compromise_2022.png"/>
               </a>
-            </li>  </ul>
+          
+          </div>  </ul>
     
       <!--
         Pagination
@@ -64,7 +61,6 @@
       <!--
         Zip file link
       -->
-    
     
       <!--
         Optional footer
@@ -84,11 +80,13 @@
     <script src="public/videojs/video.min.js"></script>
     <!-- LightGallery -->
     <script src="public/lightgallery/js/lightgallery.js"></script>
+    <script src="public/lightslider/js/lightslider.min.js"></script>
     <script src="public/lightgallery/js/lg-autoplay.js"></script>
     <script src="public/lightgallery/js/lg-pager.js"></script>
     <script src="public/lightgallery/js/lg-thumbnail.js"></script>
     <script src="public/lightgallery/js/lg-video.js"></script>
     <script src="public/lightgallery/js/lg-exif.min.js"></script>
+    <script src="public/justifiedgallery/jquery.justifiedGallery.min.js"></script>
 
     <script>
       $(document).ready(function() {
@@ -98,10 +96,28 @@
           loop : false,
           download: true,
           counter: true,
-          videojs: true
+          videojs: true,
+          exThumbImage: 'data-exthumbimage',
+        });
+
+        // Init justified gallery for albums
+        $("#albums").justifiedGallery({
+          margins: 10,
+          rowHeight: 300,
+          maxRowHeight: 325,
+        });
+
+        // Init justified gallery for photos
+        $("#media").justifiedGallery({
+          selector: '.albumList',
+          waitThumbnailsLoad: false,
+          margins: 10,
+          rowHeight: 250,
+          maxRowHeight: 275,
         });
       });
     </script>
+
 
 
   </body>
